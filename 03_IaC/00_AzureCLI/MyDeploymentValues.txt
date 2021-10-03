@@ -2,4 +2,4 @@ botSubDomain=v2t.1sg.vn
 botName=voice_to_text
 projectPrefix=v2t
 azureLocation=southeastasia
-acrName=v2t
+acrName=voicetotext
