@@ -25,26 +25,4 @@ jobs:
     - name: 'Run Initial Setup powershell'
       shell: pwsh
       run: 03_IaC/00_AzureCLI/00_InitialSetup_iac.ps1
-      id: InitialSetup
-    - name: Create an issue on GitHub regarding the A record creation
-      uses: actions/github-script@v3.0.0
-      with:
-        # The script to run
-        script: |            
-            github.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: "Create DNS A record before setting up the rest of the infrastructure",
-              body: 'Azure public IP: ${{env.CREATED_IP}} has been created. Please create an A record mapping this IP to your defined bot subdomain: ${{env.botSubDomain}}. For example myrecbot.mydomain.myextention'
-            }); 
-    - name: Create an issue on GitHub regarding the Azure Container Registry secrets
-      uses: actions/github-script@v3.0.0
-      with:
-        # The script to run
-        script: |            
-            github.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: "Create GitHub Secrets for created Azure Container Registry",
-              body: '${{env.acrName}} has been created. Please create a secret named REGISTRY_USERNAME with the value of admin user, and REGISTRY_PASSWORD with its key. Then run manually the CICD workflow.'
-            });
+      id: InitialSetup    
