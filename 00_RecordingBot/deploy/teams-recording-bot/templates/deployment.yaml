@@ -22,7 +22,8 @@ spec:
         app: {{ $fullName }}
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": windows
+        # "beta.kubernetes.io/os": windows
+         kubernetes.io/hostname: {{ include "hostName" . }}
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
